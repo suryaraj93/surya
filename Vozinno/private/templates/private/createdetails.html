@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "private/base.html" %}
+
+{% block body_block %}
+
+<h1> create details</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div clas="container">
+    <table class="table">
+        <tr>
+            <th><u><h3>Details</h3></u></th>
+            <th><u><h3>Options</h3></u></th>
+        </tr>
+        {% for items in details %}
+        <tr>
+            <td><b>{{items.name}}</b></td>
+            <td><a href="{% url 'detailsview' items.id %}" class="btn btn-outline-primary">view</a></td>
+            <td><a href="{% url 'detailsedit' items.id %}" class="btn btn-outline-primary">Edit</a></td>
+            <td><a href="{% url 'detailsdelete' items.id %}" class="btn btn-outline-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}

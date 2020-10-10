@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "private/unbase.html" %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="row">
+
+                {% for detail in details %}
+
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{detail.profile_pic.url}}" class="card-img-top" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{detail.name}} </h5>
+                            <a href="{% url 'detailsview' detail.id %}" class="btn btn-info">check</a>
+                        </div>
+                    </div>
+
+            </div>
+            {% endfor%}
+
+    </div>
+    {% endblock %}
+
